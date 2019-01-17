@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<h1>Nano Twitter</h1>
+</head>
+
+<div class="form">
+	<input maxlength="3" size="3" value="140" id="counter">
+	<textarea onkeyup="textCounter(this,'counter',140);" id="message">
+</textarea>
+	<button id="submitTweet" onclick="addTweet()">Tweet</button>
+</div>
+<p id="newTweet"></p>
+<script>
+	function textCounter(field, field2, maxlimit) {
+		var countfield = document.getElementById(field2);
+		if (field.value.length > maxlimit) {
+			field.value = field.value.substring(0, maxlimit);
+			return false;
+		} else {
+			countfield.value = maxlimit - field.value.length;
+		}
+	}
+
+	function addTweet() {
+  let tweet = document.getElementById("message").value;
+  document.getElementById("newTweet").innerHTML = tweet;
+}
+
+</script>
+
+</html>
+
+<!--
+Required User Stories:
++The user should be able to enter a message into a text field.
++The user should be able to press "Tweet" and see the message pop in below the text box.
++[The user should see a "count" that displays how many more characters the user has remaining, counting down from 140.
+The user should be able to "Retweet". Clicking Retweet immediately inserts a copy of that tweet below the original tweet.
+The user should be able to "Like". When "Like" is clicked, the text should change to "Unlike". When "Unlike" is clicked, the text should change to "Like".
+When a "Liked" tweet is retweeted, the new tweet should not be liked.
+
+-->
